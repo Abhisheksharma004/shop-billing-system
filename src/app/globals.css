@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ffffff;
+    --primary: #3b82f6;
+    --secondary: #6b7280;
+    --accent: #f97316;
+    --success: #22c55e;
+    --warning: #eab308;
+    --error: #ef4444;
+    --surface-0: #0a0a0a;
+    --surface-1: #1a2332;
+    --surface-2: #1e293b;
+    --surface-3: #262f3d;
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8;
+    --text-tertiary: #64748b;
+    --border-color: #334155;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-dark-surface-card border border-dark-border rounded-lg p-6;
+  }
+
+  .btn {
+    @apply px-4 py-2 rounded-lg transition-colors;
+  }
+
+  .btn-primary {
+    @apply bg-dark-accent text-white hover:bg-dark-accent/90;
+  }
+
+  .btn-secondary {
+    @apply bg-dark-surface-hover text-dark-text-secondary border border-dark-border 
+           hover:bg-dark-surface-elevated;
+  }
+
+  .input {
+    @apply bg-dark-surface-card border border-dark-border rounded-lg px-4 py-2 
+           text-dark-text-primary placeholder-dark-text-tertiary
+           focus:outline-none focus:ring-2 focus:ring-dark-accent/50;
+  }
+
+  .table-row {
+    @apply border-b border-dark-border hover:bg-dark-surface-hover transition-colors;
+  }
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface-1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--surface-3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary);
+}
+
+/* Base dark theme styles */
+body {
+  @apply bg-dark-surface text-dark-text-primary min-h-screen;
+  font-family: Arial, Helvetica, sans-serif;
+}
