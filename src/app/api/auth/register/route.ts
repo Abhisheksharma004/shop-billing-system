@@ -29,22 +29,25 @@ export async function POST(request: Request) {
     // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Create user
-    const user = await User.create({
+    // Create new user
+    const newUser = new User({
       shopName,
       shopAddress,
       ownerName,
       phone,
       email,
-      password: hashedPassword,
+      password: hashedPassword
     });
 
-    // Return success but don't send password
-    const { password: _, ...userWithoutPassword } = user.toJSON();
-    return NextResponse.json(userWithoutPassword, { status: 201 });
-    
-  } catch (error) {
+    // Save user to database
+    await newUser.save();
+
+    return new NextResponse('User registered successfully', { status: 201 });
+  } catch (error: any) {
     console.error('Registration error:', error);
-    return new NextResponse('Internal Server Error', { status: 500 });
+    return new NextResponse(
+      error.message || 'An error occurred during registration',
+      { status: 500 }
+    );
   }
 }

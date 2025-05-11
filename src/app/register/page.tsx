@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Register() {
   const router = useRouter();
@@ -61,7 +62,7 @@ export default function Register() {
         <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
       </div>
 
-      <div className="relative z-10 max-w-4xl mx-auto">
+      <div className="relative z-10 max-w-2xl mx-auto">
         <div className="text-center mb-8">
           <Link 
             href="/"
@@ -72,14 +73,14 @@ export default function Register() {
             </svg>
             Back to Home
           </Link>
-          <h1 className="text-5xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
-            Register Your Shop
+          <h1 className="text-4xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
+            Create Your Account
           </h1>
-          <p className="text-lg text-gray-600 max-w-xl mx-auto">
-            Join our community of shop owners and start managing your inventory efficiently
+          <p className="text-lg text-gray-600">
+            Start managing your inventory today
           </p>
         </div>
-        
+
         {error && (
           <div className="mb-6 bg-red-50 border border-red-100 p-4 rounded-xl shadow-sm animate-shake">
             <div className="flex items-center">
@@ -95,153 +96,142 @@ export default function Register() {
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="bg-white/80 backdrop-blur-lg shadow-2xl rounded-2xl p-8 border border-gray-100 hover-scale">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <form onSubmit={handleSubmit} className="mt-8 space-y-6 bg-white/50 backdrop-blur-sm rounded-xl p-6 shadow-lg">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Left Column */}
-            <div className="space-y-6">
-              <div className="group">
-                <label htmlFor="shopName" className="block text-sm font-medium text-gray-700 group-hover:text-blue-600 transition-colors">
-                  Shop Name *
+            <div className="space-y-4">
+              <div>
+                <label htmlFor="shopName" className="block text-sm font-medium text-gray-700">
+                  Shop Name
                 </label>
-                <div className="mt-1 relative">
-                  <input
-                    type="text"
-                    name="shopName"
-                    id="shopName"
-                    required
-                    className="block w-full rounded-lg border border-gray-200 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500 sm:text-sm transition-all duration-200 ease-in-out hover:border-blue-300"
-                    placeholder="Enter your shop name"
-                  />
-                </div>
+                <input
+                  id="shopName"
+                  name="shopName"
+                  type="text"
+                  required
+                  className="appearance-none rounded-lg relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm"
+                  placeholder="Your shop name"
+                />
               </div>
 
-              <div className="group">
-                <label htmlFor="ownerName" className="block text-sm font-medium text-gray-700 group-hover:text-blue-600 transition-colors">
-                  Owner Name *
+              <div>
+                <label htmlFor="ownerName" className="block text-sm font-medium text-gray-700">
+                  Owner Name
                 </label>
-                <div className="mt-1 relative">
-                  <input
-                    type="text"
-                    name="ownerName"
-                    id="ownerName"
-                    required
-                    className="block w-full rounded-lg border border-gray-200 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500 sm:text-sm transition-all duration-200 ease-in-out hover:border-blue-300"
-                    placeholder="Enter owner's full name"
-                  />
-                </div>
+                <input
+                  id="ownerName"
+                  name="ownerName"
+                  type="text"
+                  required
+                  className="appearance-none rounded-lg relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm"
+                  placeholder="Full name"
+                />
               </div>
 
-              <div className="group">
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 group-hover:text-blue-600 transition-colors">
-                  Email Address *
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                  Email Address
                 </label>
-                <div className="mt-1 relative">
-                  <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    required
-                    className="block w-full rounded-lg border border-gray-200 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500 sm:text-sm transition-all duration-200 ease-in-out hover:border-blue-300"
-                    placeholder="you@example.com"
-                  />
-                </div>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  className="appearance-none rounded-lg relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm"
+                  placeholder="Email address"
+                />
               </div>
 
-              <div className="group">
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 group-hover:text-blue-600 transition-colors">
-                  Phone Number *
+              <div>
+                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                  Password
                 </label>
-                <div className="mt-1 relative">
-                  <input
-                    type="tel"
-                    name="phone"
-                    id="phone"
-                    required
-                    pattern="[0-9]{10}"
-                    className="block w-full rounded-lg border border-gray-200 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500 sm:text-sm transition-all duration-200 ease-in-out hover:border-blue-300"
-                    placeholder="10-digit phone number"
-                  />
-                </div>
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autoComplete="new-password"
+                  required
+                  className="appearance-none rounded-lg relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm"
+                  placeholder="Create a password"
+                />
               </div>
             </div>
 
             {/* Right Column */}
-            <div className="space-y-6">
-              <div className="group">
-                <label htmlFor="shopAddress" className="block text-sm font-medium text-gray-700 group-hover:text-blue-600 transition-colors">
-                  Shop Address *
+            <div className="space-y-4">              <div>
+                <label htmlFor="shopAddress" className="block text-sm font-medium text-gray-700">
+                  Shop Address
                 </label>
-                <div className="mt-1">
-                  <textarea
-                    name="shopAddress"
-                    id="shopAddress"
-                    required
-                    rows={3}
-                    className="block w-full rounded-lg border border-gray-200 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500 sm:text-sm transition-all duration-200 ease-in-out hover:border-blue-300 resize-none"
-                    placeholder="Enter complete shop address"
-                  />
-                </div>
+                <textarea
+                  id="shopAddress"
+                  name="shopAddress"
+                  required
+                  rows={3}
+                  className="appearance-none rounded-lg relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm resize-none"
+                  placeholder="Enter your complete shop address"
+                ></textarea>
+                <p className="mt-1 text-xs text-gray-500">Please provide complete address including city, state and PIN code</p>
               </div>
 
-              <div className="group">
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700 group-hover:text-blue-600 transition-colors">
-                  Password *
+              <div>
+                <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
+                  Phone Number
                 </label>
-                <div className="mt-1 relative">
-                  <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    required
-                    minLength={6}
-                    className="block w-full rounded-lg border border-gray-200 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500 sm:text-sm transition-all duration-200 ease-in-out hover:border-blue-300"
-                    placeholder="Minimum 6 characters"
-                  />
-                </div>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  pattern="[0-9]{10}"
+                  required
+                  className="appearance-none rounded-lg relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm"
+                  placeholder="10-digit phone number"
+                />
               </div>
 
-              <div className="group">
-                <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 group-hover:text-blue-600 transition-colors">
-                  Confirm Password *
+              <div>
+                <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
+                  Confirm Password
                 </label>
-                <div className="mt-1 relative">
-                  <input
-                    type="password"
-                    name="confirmPassword"
-                    id="confirmPassword"
-                    required
-                    minLength={6}
-                    className="block w-full rounded-lg border border-gray-200 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500 sm:text-sm transition-all duration-200 ease-in-out hover:border-blue-300"
-                    placeholder="Re-enter your password"
-                  />
-                </div>
+                <input
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  type="password"
+                  autoComplete="new-password"
+                  required
+                  className="appearance-none rounded-lg relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm"
+                  placeholder="Confirm your password"
+                />
               </div>
             </div>
           </div>
 
-          <div className="mt-8">
+          <div>
             <button
               type="submit"
               disabled={loading}
-              className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-xl text-base font-medium text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 transform hover:-translate-y-0.5 shadow-lg hover:shadow-xl"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 disabled:opacity-50"
             >
               {loading ? (
-                <>
+                <span className="flex items-center">
                   <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
-                  Creating your account...
-                </>
+                  Creating Account...
+                </span>
               ) : (
-                'Create Shop Account'
+                'Create Account'
               )}
             </button>
-            
-            <p className="mt-4 text-center text-sm text-gray-600">
+          </div>
+
+          <div className="text-center">
+            <p className="text-sm text-gray-600">
               Already have an account?{' '}
-              <Link href="/login" className="font-medium text-blue-600 hover:text-blue-500 transition-colors">
-                Login here
+              <Link href="/login" className="font-medium text-purple-600 hover:text-purple-500">
+                Sign in
               </Link>
             </p>
           </div>
